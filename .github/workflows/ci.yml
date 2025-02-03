@@ -18,5 +18,5 @@ jobs:
     #building docker iage for api project
       - name : Build Docker image
         run: |
-          docker build -t weatherapi ../
+          docker build -t weatherapi -f ../Dockerfile ../  # Explicitly specifying the Dockerfile path
     
