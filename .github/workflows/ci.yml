@@ -1,0 +1,22 @@
+name: CI Pipelines for Weatherapiproject
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+    #first step is to checking out the repo
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+    #setup the docker 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+    #building docker iage for api project
+      - name : Build Docker image
+        run: |
+          docker build -t weatherapi -f Dockerfile .
+    
