@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddHttpClient<HealthCheckResult>();   
+//builder.Services.AddHttpClient<HealthCheckResult>();   
 //adding health check to an api
 builder.Services.AddHealthChecks()
     .AddCheck("API", () => HealthCheckResult.Healthy("API is healthy"))
