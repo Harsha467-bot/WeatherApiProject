@@ -1,9 +1,7 @@
 name: CI Pipelines for Weather API Project
 
-on:
-  push:
-    branches:
-      - main  # Trigger on push to the main branch (you can change this as needed)
+on: push
+
 
 jobs:
   build:
