@@ -36,8 +36,14 @@ jobs:
     - name: Install Rancher CLI
       run: |
           curl -LO https://github.com/rancher/cli/releases/download/v2.6.0/rancher-linux-amd64-v2.6.0.tar.gz
-          tar -xvzf rancher-linux-amd64-v2.5.8.tar.gz
-          sudo mv rancher-v2.5.8/rancher /usr/local/bin/rancher
+          tar -xzvf rancher-linux-amd64-v2.5.8.tar.gz
+    
+          ls -l
+    
+ 
+          sudo mv rancher-linux-amd64-v2.5.8/rancher /usr/local/bin/rancher
+    
+          rancher --version
 
       # Decode kubeconfig and set up kubectl
     - name: Set up Kubeconfig
