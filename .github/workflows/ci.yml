@@ -64,9 +64,16 @@ jobs:
 
 
       # Decode kubeconfig and set up kubectl
-    - name: Set up Kubeconfig
+    - name: Set up Kubernetes config
       run: |
-          echo "${{ secrets.KUBECONFIG }}" | base64 -d > ~/.kube/config
+        # Ensure the .kube directory exists
+        mkdir -p ~/.kube
+    
+        # Decode and write the base64-encoded config to ~/.kube/config
+        echo "***" | base64 -d > ~/.kube/config
+    
+        # Verify the config file is created
+        cat ~/.kube/config
 
       # Deploy to Local Kubernetes using Rancher CLI
     - name: Deploy to Local Kubernetes
