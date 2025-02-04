@@ -35,7 +35,7 @@ jobs:
 
     - name: Install Rancher CLI
       run: |
-          curl -LO https://github.com/rancher/cli/releases/download/v2.6.0/rancher-linux-amd64-v2.6.0.tar.gz
+          wget https://github.com/rancher/cli/releases/download/v2.6.0/rancher-linux-amd64-v2.6.0.tar.gz
               # Check if the file exists
           if [ -f rancher-linux-amd64-v2.5.8.tar.gz ]; then
             echo "Download successful"
