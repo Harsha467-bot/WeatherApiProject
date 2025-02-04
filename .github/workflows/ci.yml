@@ -70,7 +70,7 @@ jobs:
         mkdir -p ~/.kube
     
         # Decode and write the base64-encoded config to ~/.kube/config
-        echo "***" | base64 -d > ~/.kube/config
+         echo "${{ secrets.KUBECONFIG_SECRET }}" | base64 -d > ~/.kube/config
     
         # Verify the config file is created
         cat ~/.kube/config
