@@ -32,3 +32,21 @@ jobs:
     - name: Push Docker image to Docker Hub
       run: |
         docker push nagarajharsha20/weatherapi:${{ github.sha }}
+
+    - name: Install Rancher CLI
+      run: |
+          curl -LO https://github.com/rancher/cli/releases/download/v2.5.8/rancher-linux-amd64-v2.5.8.tar.gz
+          tar -xvzf rancher-linux-amd64-v2.5.8.tar.gz
+          sudo mv rancher-v2.5.8/rancher /usr/local/bin/rancher
+
+      # Decode kubeconfig and set up kubectl
+    - name: Set up Kubeconfig
+      run: |
+          echo "${{ secrets.KUBECONFIG }}" | base64 -d > ~/.kube/config
+
+      # Deploy to Local Kubernetes using Rancher CLI
+    - name: Deploy to Local Kubernetes
+      run: |
+          rancher kubectl apply -f deployment.yaml  # Apply the deployment file
+          rancher kubectl apply -f service.yaml     # Apply the service file
+          rancher kubectl get pods  # Verify the pods are running
