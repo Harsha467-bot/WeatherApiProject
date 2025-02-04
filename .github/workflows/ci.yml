@@ -78,6 +78,6 @@ jobs:
       # Deploy to Local Kubernetes using Rancher CLI
     - name: Deploy to Local Kubernetes
       run: |
-          rancher kubectl apply -f deployment.yaml  # Apply the deployment file
-          rancher kubectl apply -f service.yaml     # Apply the service file
-          rancher kubectl get pods  # Verify the pods are running
+           kubectl apply -f deployment.yaml  # Apply the deployment file
+           kubectl apply -f service.yaml     # Apply the service file
+           kubectl get pods  # Verify the pods are running
