@@ -35,25 +35,31 @@ jobs:
 
     - name: Install Rancher CLI
       run: |
-          wget https://github.com/rancher/cli/releases/download/v2.6.0/rancher-linux-amd64-v2.6.0.tar.gz
-              # Check if the file exists
-          if [ -f rancher-linux-amd64-v2.5.8.tar.gz ]; then
-            echo "Download successful"
-          else
-            echo "Download failed" && exit 1
-          fi
+        # Download Rancher CLI tarball with wget
+        wget https://github.com/rancher/cli/releases/download/v2.6.0/rancher-linux-amd64-v2.6.0.tar.gz
+      
+          # Check if the file exists
+        if [ -f rancher-linux-amd64-v2.6.0.tar.gz ]; then
+          echo "Download successful"
+        else
+          echo "Download failed" && exit 1
+        fi
+      
+          # List downloaded files for debug purposes
+        ls -l
       
           # Extract the tarball (correct flag for .tar.gz files)
-          tar -xzvf rancher-linux-amd64-v2.5.8.tar.gz
+        tar -xzvf rancher-linux-amd64-v2.6.0.tar.gz
           
-          # List the files to check the extracted content
-          ls -l
-          
+          # List the files in the extracted directory to confirm successful extraction
+        ls -l rancher-linux-amd64-v2.6.0
+      
           # Move the Rancher binary to /usr/local/bin
-          sudo mv rancher-linux-amd64-v2.5.8/rancher /usr/local/bin/rancher
-          
+        sudo mv rancher-linux-amd64-v2.6.0/rancher /usr/local/bin/rancher
+      
           # Verify the Rancher CLI installation
-          rancher --version
+        rancher --version
+  
 
 
       # Decode kubeconfig and set up kubectl
